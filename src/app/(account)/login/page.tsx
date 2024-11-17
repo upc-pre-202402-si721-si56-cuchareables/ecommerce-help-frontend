@@ -1,7 +1,6 @@
 "use client"
 import { useState } from "react";
 import Link from "next/link";
-import { Stack, Radio, RadioGroup } from "@chakra-ui/react";
 
 const Login = () => {
     const [value, setValue] = useState("store");
@@ -9,8 +8,8 @@ const Login = () => {
 
     const setRouterHandler = () => {
         if (value) {
-            if (value === "store") window.location.href = `/${value}/${username}/home`;
-            else if (value === "client") window.location.href = `/${value}/${username}/home`;
+            if (value === "store") window.location.href = `/home`;
+            else if (value === "client") window.location.href = `/home`;
         }
     };
 
@@ -21,28 +20,15 @@ const Login = () => {
                 <section className="flex flex-col mx-auto my-4">
                     <input
                         type="text"
-                        placeholder="Ingresar usuario"
+                        placeholder="Ingresar nombre de usuario"
                         className="c-input__input"
                         onChange={(e) => { setUsername(e.target.value) }}
                     />
                     <input
                         type="password"
                         placeholder="Ingresar contraseña"
-                        className="c-input__input mt-2"
+                        className="c-input__input my-2"
                     />
-                    <RadioGroup
-                        onChange={setValue}
-                        value={value}
-                    >
-                        <Stack
-                            direction="row"
-                            my={4}
-                        >
-                            <span>Loguearse como: </span>
-                            <Radio value="store">Tienda</Radio>
-                            <Radio value="client">Cliente</Radio>
-                        </Stack>
-                    </RadioGroup>
                     <button
                         className="c-button py-4 font-semibold"
                         onClick={setRouterHandler}
